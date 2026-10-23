@@ -1,0 +1,25 @@
+name: Correction
+description: Something in a video or in this repo is wrong
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: Episode number and timestamp, or the file path in this repo
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What's wrong, and what's right
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A source, a command, or a log line that shows it
+    validations:
+      required: true

@@ -1,0 +1,5 @@
+upstream/
+tasks/
+venvs/
+runs/*/r*/work/
+__pycache__/

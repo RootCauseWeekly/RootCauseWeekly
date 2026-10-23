@@ -20,7 +20,20 @@ This is the evidence behind the Root Cause video "Claude Code Fixed 9/9 Real Bug
 - **Differential testing** (`fuzz.py`, `fuzz2.py`): each fix was compared against the real fix and against the pre-fix code.
   - **t1:** 0 differences on 37,664 inputs.
   - **t2:** runs 2 and 3 had 0 differences on 25,936 inputs. Run 1 had 32, all at 10^100 − 1 and its neighbours (100 digits). That's where the real fix still prints a huge "decillion" count: known issue humanize #356.
-  - **t3:** across 6,910 strings, the pre-fix code hangs on 1,291. Every fix removes all of those hangs. The real fix 032dc0d (master only, unreleased) also changes 201 outputs that previously terminated, and all 201 have a line wider than `width`. Claude runs 1 and 2 changed 0 of them. Run 3 changed 147 (107 whitespace or escape placement, 40 dropped leading blank lines) and produced 0 over-width lines.
+  - **t3:** across 6,910 strings, the pre-fix code hangs on 1,291. Every fix removes all of those hangs. The real fix 032dc0d (master only, unreleased) also changes 201 outputs that previously terminated, and all 201 have a line wider than `width`. Claude runs 1 and 2 changed 0 of them. Run 3 changed 147 (107 differ only in whitespace or escape-code placement, 40 have the same text with different line breaks, such as a dropped leading blank line) and produced 0 over-width lines.
+  - Reported upstream as [python-tabulate #478](https://github.com/astanin/python-tabulate/issues/478).
+
+## Reproduce it
+
+You need git, [uv](https://docs.astral.sh/uv/) and Python 3.
+```bash
+./setup.sh                                    # clones upstream, rebuilds the pre-fix snapshots, envs, and each run's code (~10 s)
+python3 regrade.py                            # re-grades all 9 runs with the hidden upstream tests -> 9/9 PASS
+python3 fuzz.py t2-intword                    # each fix vs the real fix (also t1-naturalsize, t3-tabulate-hang)
+venvs/tabulate/bin/python fuzz2.py t3         # t3 vs the pre-fix code: the 201 over-width outputs
+venvs/humanize/bin/python fuzz2.py t2         # t2 run 1: the 32 differences, all at 100 digits
+```
+Re-running the agent itself (`python3 run.py <task> <n>`) needs Claude Code installed and logged in, and it costs a few cents per run. Model outputs vary, so expect your diffs to differ from the ones saved here.
 
 ## Caveats
 - These are small, single-function bugs, and each report included a repro.

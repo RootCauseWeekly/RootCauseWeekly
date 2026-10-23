@@ -26,7 +26,7 @@ Every episode takes one failure (a famous outage, a nasty bug, or an AI tool und
 
 | # | Episode | Format | Receipts |
 |---|---|---|---|
-| 001 | **Claude Code Fixed 9/9 Real Bugs. Then I Checked Harder.** | Long-form · 9 min | [logs, grader, results](episodes/001-claude-code-vs-3-real-bugs) |
+| 001 | **Claude Code Fixed 9/9 Real Bugs. Then I Checked Harder.** | Long-form · 9 min | [logs, grader, results](episodes/001-claude-code-vs-3-real-bugs) · found [tabulate #478](https://github.com/astanin/python-tabulate/issues/478) |
 | S01 | **A decade-old bug in 70% of the web. AI found it.** (PHP2Shell) | Short | sources in the video description |
 
 More breakdowns are on the way. [Subscribe on YouTube](https://www.youtube.com/@RootCauseWeekly) to catch them.
@@ -50,10 +50,14 @@ episodes/
                                     grader/ (hashed) · runs/ (prompts, diffs, transcripts)
 ```
 
-Clone it, read the transcripts, rerun the graders. Found a mistake? [Open an issue](../../issues).
+Clone it, read the transcripts, and rerun the graders: each episode folder has a `setup.sh` and step-by-step instructions. Found a mistake? [File a correction](../../issues/new?template=correction.yml).
 
 ## Suggest an episode
 
-What should break next? Open an issue with the title `Episode idea: …`, or leave a comment under any video.
+What should break next? [Suggest an episode](../../issues/new?template=episode-idea.yml), or leave a comment under any video.
+
+## License
+
+Code (scripts and harnesses) is [MIT](LICENSE). Write-ups, data and transcripts are [CC BY 4.0](LICENSE-CC-BY-4.0.txt): reuse them freely with credit to Root Cause. Third-party code that the scripts fetch keeps its own license.
 
 <p align="center"><sub>Root Cause · faceless, weekly, and every claim comes with receipts.</sub></p>

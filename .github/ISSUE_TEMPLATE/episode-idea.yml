@@ -1,0 +1,27 @@
+name: Episode idea
+description: Suggest a software failure to break down, or something to put to the test
+title: "Episode idea: "
+labels: ["episode-idea"]
+body:
+  - type: dropdown
+    id: series
+    attributes:
+      label: Which series?
+      options:
+        - Disaster breakdown (a real outage or bug)
+        - AI, put to the test
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What should we look at?
+      description: The incident, bug or task, and why it's interesting.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Post-mortems, CVEs, issues, articles. Every figure in a video needs one.
