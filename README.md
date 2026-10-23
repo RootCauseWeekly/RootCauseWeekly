@@ -26,7 +26,7 @@ Every episode takes one failure (a famous outage, a nasty bug, or an AI tool und
 
 | # | Episode | Format | Receipts |
 |---|---|---|---|
-| 001 | **Claude Code Fixed 9/9 Real Bugs. Then I Checked Harder.** | Long-form · 9 min | [logs, grader, results](episodes/001-claude-code-vs-3-real-bugs) · found [tabulate #478](https://github.com/astanin/python-tabulate/issues/478) |
+| 001 | **[Claude Code Fixed 9/9 Real Bugs. Then I Checked Harder.](https://youtu.be/OWmdR0hGPY0)** | Long-form · 9 min | [logs, grader, results](episodes/001-claude-code-vs-3-real-bugs) · found [tabulate #478](https://github.com/astanin/python-tabulate/issues/478) |
 | S01 | **A decade-old bug in 70% of the web. AI found it.** (PHP2Shell) | Short | sources in the video description |
 
 More breakdowns are on the way. [Subscribe on YouTube](https://www.youtube.com/@RootCauseWeekly) to catch them.

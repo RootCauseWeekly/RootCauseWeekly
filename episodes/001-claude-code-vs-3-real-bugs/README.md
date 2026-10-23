@@ -1,6 +1,8 @@
 # Claude Code vs 3 real bugs: the receipts
 
-This is the evidence behind the Root Cause video "Claude Code Fixed 9/9 Real Bugs. Then I Checked Harder."
+This is the evidence behind the Root Cause video [**"Claude Code Fixed 9/9 Real Bugs. Then I Checked Harder."**](https://youtu.be/OWmdR0hGPY0)
+
+[![Watch on YouTube](https://img.youtube.com/vi/OWmdR0hGPY0/maxresdefault.jpg)](https://youtu.be/OWmdR0hGPY0)
 
 ## Setup
 - **Bugs:** three real, already-fixed bugs from MIT-licensed projects. Each task is the project's code at the parent of the real fix commit.
