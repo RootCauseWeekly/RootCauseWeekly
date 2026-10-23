@@ -1,0 +1,43 @@
+diff --git a/tabulate/__init__.py b/tabulate/__init__.py
+index b9f9f56..4e37f53 100644
+--- a/tabulate/__init__.py
++++ b/tabulate/__init__.py
+@@ -2739,6 +2739,11 @@ class _CustomTextWrap(textwrap.TextWrapper):
+             stripped_chunk = _strip_ansi(chunk)
+             while i <= len(stripped_chunk) and self._len(stripped_chunk[:i]) <= space_left:
+                 i = i + 1
++            # If not even the first character fits (e.g. a wide character on a
++            # line narrower than its display width) and the line is empty,
++            # take it anyway; otherwise no progress is made and we loop forever.
++            if i == 1 and not cur_line and stripped_chunk:
++                i = 2
+             # Consider escape codes when breaking words up
+             total_escape_len = 0
+             last_group = 0
+diff --git a/test/test_textwrapper.py b/test/test_textwrapper.py
+index 6f77cb7..73051e0 100644
+--- a/test/test_textwrapper.py
++++ b/test/test_textwrapper.py
+@@ -77,6 +77,22 @@ def test_wrap_wide_char_longword():
+     assert_equal(expected, result)
+ 
+ 
++def test_wrap_wide_char_narrower_than_char():
++    """TextWrapper: wide char wider than the wrap width must not hang"""
++    try:
++        import wcwidth  # noqa: F401
++    except ImportError:
++        skip("test_wrap_wide_char_narrower_than_char is skipped")
++
++    data = "한글"
++
++    expected = ["한", "글"]
++
++    wrapper = CTW(width=1)
++    result = wrapper.wrap(data)
++    assert_equal(expected, result)
++
++
+ def test_wrap_mixed_string():
+     """TextWrapper: wrapping string with mix of wide and non-wide chars"""
+     try:

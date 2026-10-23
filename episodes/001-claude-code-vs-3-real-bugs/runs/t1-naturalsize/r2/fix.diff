@@ -1,0 +1,43 @@
+diff --git a/src/humanize/filesize.py b/src/humanize/filesize.py
+index c495fed..5dde72c 100644
+--- a/src/humanize/filesize.py
++++ b/src/humanize/filesize.py
+@@ -97,6 +97,19 @@ def naturalsize(
+         return f"{int(bytes_)}B" if gnu else _("%d Bytes") % int(bytes_)
+ 
+     exp = int(min(log(abs_bytes, base), len(suffix)))
++    formatted = format % (bytes_ / (base**exp))
++
++    # Formatting may round the value up to the base (e.g. 999.99 kB -> "1000.0 kB"),
++    # in which case it should be shown in the next larger unit instead.
++    if exp < len(suffix):
++        try:
++            rounded_up = abs(float(formatted)) >= base
++        except ValueError:
++            rounded_up = False
++        if rounded_up:
++            exp += 1
++            formatted = format % (bytes_ / (base**exp))
++
+     space = "" if gnu else " "
+-    ret: str = format % (bytes_ / (base**exp)) + space + _(suffix[exp - 1])
++    ret: str = formatted + space + _(suffix[exp - 1])
+     return ret
+diff --git a/tests/test_filesize.py b/tests/test_filesize.py
+index 04774d9..734bd9e 100644
+--- a/tests/test_filesize.py
++++ b/tests/test_filesize.py
+@@ -16,6 +16,13 @@ import humanize
+         (["1000"], "1.0 kB"),
+         ([10**3], "1.0 kB"),
+         ([10**6], "1.0 MB"),
++        ([999999], "1.0 MB"),
++        ([999999999], "1.0 GB"),
++        ([999999, False, False, "%.3f"], "999.999 kB"),
++        ([1024**2 - 1, True], "1.0 MiB"),
++        ([1024**2 - 1, False, True], "1.0M"),
++        ([10**30 - 1], "1.0 QB"),
++        ([10**33 - 1], "1000.0 QB"),
+         ([10**9], "1.0 GB"),
+         ([10**12], "1.0 TB"),
+         ([10**15], "1.0 PB"),

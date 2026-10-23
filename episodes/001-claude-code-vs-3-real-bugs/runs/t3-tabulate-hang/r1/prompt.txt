@@ -1,0 +1,9 @@
+You are working in a checkout of the open-source Python library `tabulate`. A user filed this bug report:
+
+An infinite loop on wide characters:
+
+>>> import tabulate
+>>> data = "\ud55c\uae00"  # Korean text, each char is 2 display columns wide
+>>> tabulate._CustomTextWrap(width=1).wrap(data)   # never returns
+
+Find the root cause and fix it in the library code. Use `.venv/bin/python` to run code and tests (set PYTHONPATH=.). Do not use the internet. When you are done, briefly explain the root cause and your fix.

@@ -1,0 +1,21 @@
+{
+ "task": "t3-tabulate-hang",
+ "attempt": 2,
+ "rc": 0,
+ "wall_s": 53.6,
+ "verdict": "PASS",
+ "grade_tail": [
+  ".............s.......................................................... [ 90%]",
+  "................................                                         [100%]",
+  "319 passed, 1 skipped in 1.11s"
+ ],
+ "cost_usd": 0.1589982,
+ "duration_ms": 52405,
+ "num_turns": 12,
+ "is_error": false,
+ "files_changed": [
+  "tabulate/__init__.py",
+  "test/test_textwrapper.py"
+ ],
+ "stderr": ""
+}

@@ -1,0 +1,17 @@
+{
+ "task": "t1-naturalsize",
+ "inputs": 37664,
+ "original_bug_differs": 456,
+ "r1": {
+  "mismatches": 0,
+  "examples": []
+ },
+ "r2": {
+  "mismatches": 0,
+  "examples": []
+ },
+ "r3": {
+  "mismatches": 0,
+  "examples": []
+ }
+}

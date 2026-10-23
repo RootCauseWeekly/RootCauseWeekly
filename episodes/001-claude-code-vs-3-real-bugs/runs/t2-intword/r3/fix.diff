@@ -1,0 +1,28 @@
+diff --git a/src/humanize/number.py b/src/humanize/number.py
+index ebccfb9..088f9a9 100644
+--- a/src/humanize/number.py
++++ b/src/humanize/number.py
+@@ -282,7 +282,9 @@ def intword(value: NumberOrString, format: str = "%.1f") -> str:
+     chopped = value / power
+     rounded_value = float(format % chopped)
+ 
+-    if not largest_ordinal and rounded_value * power == powers[ordinal + 1]:
++    # Compare against the exact integer ratio between powers: multiplying the float
++    # back by `power` is inexact for large powers (e.g. 1000.0 * 10**21 != 10**24).
++    if not largest_ordinal and rounded_value == powers[ordinal + 1] // power:
+         # After rounding, we end up just at the next power
+         ordinal += 1
+         rounded_value = 1.0
+diff --git a/tests/test_number.py b/tests/test_number.py
+index 755e29e..73060bb 100644
+--- a/tests/test_number.py
++++ b/tests/test_number.py
+@@ -117,6 +117,8 @@ def test_intword_powers() -> None:
+         (["6000000000000"], "6.0 trillion"),
+         (["-6000000000000"], "-6.0 trillion"),
+         (["999999999999999"], "1.0 quadrillion"),
++        ([10**24 - 1], "1.0 septillion"),
++        ([10**27 - 1], "1.0 octillion"),
+         (["1000000000000000"], "1.0 quadrillion"),
+         (["1300000000000000"], "1.3 quadrillion"),
+         (["-1300000000000000"], "-1.3 quadrillion"),

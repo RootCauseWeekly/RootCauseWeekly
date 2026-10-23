@@ -1,0 +1,9 @@
+grader/t1-naturalsize/BASE_COMMIT: OK
+grader/t1-naturalsize/FIX_COMMIT: OK
+grader/t1-naturalsize/tests/test_filesize.py: OK
+grader/t2-intword/BASE_COMMIT: OK
+grader/t2-intword/FIX_COMMIT: OK
+grader/t2-intword/tests/test_number.py: OK
+grader/t3-tabulate-hang/BASE_COMMIT: OK
+grader/t3-tabulate-hang/FIX_COMMIT: OK
+grader/t3-tabulate-hang/test/test_textwrapper.py: OK

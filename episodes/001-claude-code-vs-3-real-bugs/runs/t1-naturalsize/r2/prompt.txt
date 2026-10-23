@@ -1,0 +1,13 @@
+You are working in a checkout of the open-source Python library `humanize`. A user filed this bug report:
+
+`naturalsize()` gives the wrong unit right below a boundary:
+
+>>> from humanize import naturalsize
+>>> naturalsize(999999)
+'1000.0 kB'      # expected '1.0 MB'
+>>> naturalsize(999999999)
+'1000.0 MB'      # expected '1.0 GB'
+>>> naturalsize(1024 ** 2 - 1, binary=True)
+'1024.0 KiB'     # expected '1.0 MiB'
+
+Find the root cause and fix it in the library code. Use `.venv/bin/python` to run code and tests (set PYTHONPATH=src). Do not use the internet. When you are done, briefly explain the root cause and your fix.

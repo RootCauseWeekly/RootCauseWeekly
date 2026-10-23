@@ -1,0 +1,21 @@
+{
+ "task": "t1-naturalsize",
+ "attempt": 2,
+ "rc": 0,
+ "wall_s": 54.1,
+ "verdict": "PASS",
+ "grade_tail": [
+  "  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.",
+  "  OPS: Operations Per Second, computed as 1 / Mean",
+  "714 passed, 69 skipped in 3.40s"
+ ],
+ "cost_usd": 0.1282466,
+ "duration_ms": 52879,
+ "num_turns": 10,
+ "is_error": false,
+ "files_changed": [
+  "src/humanize/filesize.py",
+  "tests/test_filesize.py"
+ ],
+ "stderr": ""
+}

@@ -1,0 +1,21 @@
+{
+ "task": "t2-intword",
+ "attempt": 2,
+ "rc": 0,
+ "wall_s": 43.8,
+ "verdict": "PASS",
+ "grade_tail": [
+  "  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.",
+  "  OPS: Operations Per Second, computed as 1 / Mean",
+  "741 passed, 110 skipped in 5.28s"
+ ],
+ "cost_usd": 0.1162256,
+ "duration_ms": 42591,
+ "num_turns": 9,
+ "is_error": false,
+ "files_changed": [
+  "src/humanize/number.py",
+  "tests/test_number.py"
+ ],
+ "stderr": ""
+}
